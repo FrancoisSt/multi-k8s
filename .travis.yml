@@ -14,7 +14,8 @@ after_success:
   - docker build -t nawu/multi-server ./server
   - docker build -t nawu/multi-worker ./worker
 
-  # Log into Docker CLI
+  # Log into the Docker CLI
+  # Remember to escape special chars ($, &, etc.) in password
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Push images to Docker Hub
