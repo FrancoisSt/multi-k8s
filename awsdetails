@@ -1,0 +1,10 @@
+AWS RDS Details:
+username: postgres
+password: postgrespassword
+dbname: fibvalues
+
+
+IAM details:
+User: multi-docker-deployer
+Access ID Key: AKIA4ZGD3A4KHPRMXLWG
+Secret Access Key: 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
