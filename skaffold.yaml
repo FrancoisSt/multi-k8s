@@ -1,29 +1,37 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v1beta15
 kind: Config
 build:
-  local:
-    push: false
   artifacts:
     - image: nawu/multi-client
       context: client
+      sync:
+        manual:
+          - src: "**/*.css"
+            dest: .
+          - src: "**/*.html"
+            dest: .
+          - src: "**/*.js"
+            dest: .
       docker:
         dockerfile: Dockerfile.dev
-      sync:
-        "**/*.js": .
-        "**/*.css": .
-        "**/*.html": .
     - image: nawu/multi-server
       context: server
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
       docker:
         dockerfile: Dockerfile.dev
-      sync:
-        "**/*.js": .
     - image: nawu/multi-worker
       context: worker
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
       docker:
         dockerfile: Dockerfile.dev
-      sync:
-        "**/*.js": .
+  local:
+    push: false
 deploy:
   kubectl:
     manifests:
