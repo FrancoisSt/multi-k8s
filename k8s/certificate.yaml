@@ -1,0 +1,20 @@
+apiVersion: certmanager.k3s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: mpdhub-co-za-tls
+spec:
+  secretName: mpdhub-co-za
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: mpdhub.co.za
+  dnsNames:
+    - mpdhub.co.za
+    - www.mpdhub.co.za
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - mpdhub.co.za
+          - www.mpdhub.co.za
