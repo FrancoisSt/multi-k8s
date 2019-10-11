@@ -5,13 +5,25 @@ build:
     push: false
   artifacts:
     - image: nawu/multi-client
-      context: ./client
+      context: client
       docker:
         dockerfile: Dockerfile.dev
       sync:
         "**/*.js": .
         "**/*.css": .
         "**/*.html": .
+    - image: nawu/multi-server
+      context: server
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        "**/*.js": .
+    - image: nawu/multi-worker
+      context: worker
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        "**/*.js": .
 deploy:
   kubectl:
     manifests:
