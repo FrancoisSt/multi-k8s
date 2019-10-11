@@ -1,4 +1,4 @@
-apiVersion: certmanager.k3s.io/v1alpha1
+apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
   name: mpdhub-co-za-tls
